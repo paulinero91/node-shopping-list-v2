@@ -28,6 +28,7 @@ Recipes.create(
 // when the root of this router is called with GET, return
 // all current ShoppingList items
 app.get('/shopping-list', (req, res) => {
+  console.log(ShoppingList.get())
   res.json(ShoppingList.get());
 });
 
@@ -43,7 +44,7 @@ app.post('/shopping-list', jsonParser, (req, res) => {
     }
   }
 
-  const item = ShoppingList.create(req.body.name, req.body.budget);
+  const item = ShoppingList.create(req.body.name, req.body.budget, req.body.calories);
   res.status(201).json(item);
 });
 
